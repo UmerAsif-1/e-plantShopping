@@ -1,5 +1,6 @@
-import React, { useState,useEffect } from 'react';
-import './ProductList.css'
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux'; // Import useDispatch and useSelector
+import './ProductList.css';
 import CartItem from './CartItem';
 import { addItem } from './CartSlice';
 
@@ -7,6 +8,7 @@ function ProductList() {
     const [showCart, setShowCart] = useState(false); 
     const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
     const [addedToCart, setAddedToCart] = useState({});
+    const totalQuantity = useSelector(state => state.cart.totalQuantity); // Get total quantity from state
 
     const plantsArray = [
         {
