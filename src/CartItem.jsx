@@ -20,11 +20,12 @@ const CartItem = ({ onContinueShopping }) => {
         return (parseFloat(item.cost.slice(1)) * item.quantity).toFixed(2); // Fix to 2 decimal places
      };
 
-  const handleContinueShopping = (e) => {
-    e.preventDefault();
-    onContinueShopping();
-   
-  };
+    const handleContinueShopping = (e) => {
+        e.preventDefault();
+        if (onContinueShopping) {
+          onContinueShopping();
+        }
+      };
 
   const handleIncrement = (item) => {
     dispatch(updateQuantity({ name: item.name, quantity: item.quantity + 1 }));
@@ -45,7 +46,6 @@ const CartItem = ({ onContinueShopping }) => {
   const handleCheckoutShopping = (e) => {
     alert('Functionality to be added for future reference');
   };
-
 
   return (
     <div className="cart-container">
